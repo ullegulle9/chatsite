@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <link href="inl2js2.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="flexCont">
+        <div class="navBar">
+            <div class="login">
+                <input type="text" placeholder="Enter your name" id="nameInput">
+                <button id="saveName">Log in</button>
+            </div>
+            <button id="forget">Log out</button>
+        </div>
+
+        <div id="welcome"></div>
+
+
+
+
+        <br>
+        <div id="chatBox">
+            <div class="flexCont" id="messageBox"></div>
+            <textarea name="message" rows="5" cols="30" id="chatInput"></textarea>
+            <button id="send">Send</button>
+
+        </div>
+    </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBkD4tVRksHdRC59I6lNhgfx4-HR2fENwI",
+            authDomain: "chat-project-ce7dc.firebaseapp.com",
+            databaseURL: "https://chat-project-ce7dc.firebaseio.com",
+            storageBucket: "chat-project-ce7dc.appspot.com",
+            messagingSenderId: "1072386821565"
+        };
+        firebase.initializeApp(config);
+
+    </script>
+    <script src="inl2js2.js"></script>
+</body>
+
+</html>

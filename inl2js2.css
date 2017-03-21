@@ -1,0 +1,86 @@
+.flexCont {
+    display: flex;
+  align-items: center;
+  justify-content: center;
+    flex-direction: column;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+#chatBox {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    font-family: monospace;
+    
+}
+
+#messageBox {
+    height: 400px;
+    overflow: scroll;
+}
+
+#messageBox > div {
+    flex: auto;
+    width: 460px;
+    overflow-wrap: break-word;
+}
+
+.chatMsg {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.chatName {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.chatText {
+    font-size: 16px;
+}
+
+.postedAt {
+    font-size: 10px;
+}
+
+.rateBtn {
+    width: 20px;
+}
+
+.redVote {
+    color: firebrick;
+}
+
+.greenVote {
+    color: forestgreen;
+}
+
+.navBar {
+    background: rgba(0, 0, 0, .9);
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    padding: 5px;
+}
+
+.login {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10px;
+}
+
+#welcome {
+    margin-top: 20px;
+}
+
+#forget {
+    float: right;
+    margin-right: 10px;
+}
+
