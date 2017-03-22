@@ -8,6 +8,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: floralwhite;
 }
 
 
@@ -17,7 +18,7 @@ body {
     flex-direction: column;
     width: 500px;
     font-family: monospace;
-    
+    background-color: rgba(250, 250, 250, .8);
 }
 
 #messageBox {
@@ -33,7 +34,7 @@ body {
 
 .chatMsg {
     padding: 10px;
-    border: 1px solid black;
+    border: 1px solid rgba(115, 115, 115, .8);
 }
 
 .chatName {
@@ -62,7 +63,7 @@ body {
 }
 
 .navBar {
-    background: rgba(0, 0, 0, .9);
+    background: rgba(50, 0, 25, .95);
     position: fixed;
     width: 100%;
     top: 0px;
@@ -76,11 +77,67 @@ body {
 }
 
 #welcome {
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 #forget {
     float: right;
     margin-right: 10px;
 }
+
+.btn {
+    background-color: rgba(150, 60, 65, .7);
+    color: aliceblue;
+    padding: 7px;
+    font-family: Anton;
+    border-width: 0;
+    cursor: pointer;
+}
+
+.sendbtn {
+    background-color: rgba(150, 60, 65, .7);
+    color: aliceblue;
+    font-family: Anton;
+    border-width: 0;
+    cursor: pointer;
+}
+
+h1 {
+    font-family: Anton;
+    color: rgba(0, 0, 0, .9);
+}
+
+#nameInput {
+    margin-right: 5px;
+}
+
+img {
+    cursor: pointer;
+}
+
+#welcomeTitleBox {
+    position: absolute;
+    top: 200px;
+    display: block;
+}
+
+#welcomeTitleBox > p {
+   text-align: center;
+    font-family: Anton;
+    font-size: 22px;
+}
+
+#welcomeTitle {
+    font-family: Anton;
+    font-size: 72px;
+    text-align: center;
+}
+
+input {
+    font-family: monospace;
+    padding-left: 5px;
+}
+
+
+
 

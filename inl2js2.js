@@ -4,14 +4,20 @@ let welcomeDiv = document.getElementById('welcome');
 let logOut = document.getElementById('forget');
 let chatField = document.getElementById('chatInput');
 let chatBtn = document.getElementById('send');
-
+let wBox = document.getElementById('welcomeTitleBox');
 
 var numberOfMessages;
 let chtBox = document.getElementById('chatBox');
 let msgBox = document.getElementById('messageBox');
 chtBox.style.display = 'none';
 nameBtn.addEventListener('click', saveName);
+inputName.addEventListener('keypress', x => {
+    if (x.keyCode == 13){
+        saveName();
+    }
+});
 logOut.addEventListener('click', forgetName);
+
 
 updateChat();
 
@@ -27,6 +33,7 @@ window.onload = function () {
         chtBox.style.display = 'flex';
         inputName.style.display = 'none';
         nameBtn.style.display = 'none';
+        wBox.style.display = 'none';
 
     } else {
         logOut.style.display = 'none';
@@ -45,6 +52,7 @@ function saveName() {
         logOut.style.display = 'block';
         welcomeDiv.innerHTML = `<h1>Welcome ${localStorage.getItem("name")} </h1>`;
         loggedInUser = name;
+        wBox.style.display = 'none';
     } else {
         welcomeDiv.innerHTML = 'You need to enter a name to login!';
     }
@@ -58,6 +66,8 @@ function forgetName() {
     welcomeDiv.innerHTML = '';
     logOut.style.display = 'none';
     chtBox.style.display = 'none';
+    wBox.innerHTML = '<p>See you soon again!</p>';
+    wBox.style.display = 'block';
 }
 
 chatBtn.addEventListener('click', function (e) {

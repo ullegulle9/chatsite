@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Chat</title>
     <link href="inl2js2.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oswald|Baloo+Bhaina|Chewy|Anton">
 </head>
 
 <body>
@@ -12,12 +13,16 @@
         <div class="navBar">
             <div class="login">
                 <input type="text" placeholder="Enter your name" id="nameInput">
-                <button id="saveName">Log in</button>
+                <button class="btn" id="saveName">LOG IN</button>
             </div>
-            <button id="forget">Log out</button>
+            <button class="btn" id="forget">LOG OUT</button>
         </div>
 
         <div id="welcome"></div>
+        <div id="welcomeTitleBox">
+            <div id="welcomeTitle">Welcome to Chat Up!</div>
+            <p>LOG IN TO GET STARTED</p>
+        </div>
 
 
 
@@ -26,7 +31,7 @@
         <div id="chatBox">
             <div class="flexCont" id="messageBox"></div>
             <textarea name="message" rows="5" cols="30" id="chatInput"></textarea>
-            <button id="send">Send</button>
+            <button class="sendbtn" id="send">Send</button>
 
         </div>
     </div>
