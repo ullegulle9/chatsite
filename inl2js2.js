@@ -12,7 +12,7 @@ let msgBox = document.getElementById('messageBox');
 chtBox.style.display = 'none';
 nameBtn.addEventListener('click', saveName);
 inputName.addEventListener('keypress', x => {
-    if (x.keyCode == 13){
+    if (x.keyCode == 13) {
         saveName();
     }
 });
@@ -66,7 +66,7 @@ function forgetName() {
     welcomeDiv.innerHTML = '';
     logOut.style.display = 'none';
     chtBox.style.display = 'none';
-    wBox.innerHTML = '<p>See you soon again!</p>';
+    wBox.innerHTML = '<p>See you again soon!</p>';
     wBox.style.display = 'block';
 }
 
@@ -99,45 +99,52 @@ function sendMessage() {
 
 let likeBool = false;
 let disLikeBool = false;
+let pressed = false;
+
 
 function updateChat() {
 
     firebase.database().ref('messages/').on('value', function (snapshot) {
         var data = snapshot.val();
-        
+
         msgBox.innerHTML = '';
         for (let p in data) {
             let pObj = data[p];
             let votes = data[p].Votes;
             let upVote = 0;
             let downVote = 0;
-            console.log(data[p].Votes);
-            console.log(pObj.ID);
-            if (votes == undefined){
+            let upVoters = [];
+            let downVoters = [];
+            //console.log(data[p].Votes);
+            //console.log(pObj.ID);
+            if (votes == undefined) {
                 upVote = 0;
                 downVote = 0;
-            }
-            
-            else {
-                for (let prop in votes){
-                    console.log(votes[prop]);
-                    if (votes[prop] == 1){
+            } else {
+                for (let prop in votes) {
+
+                    if (votes[prop] == 1) {
                         upVote++;
-                    }
-                    else if (votes[prop] == -1){
+                        upVoters.push(prop);
+                    } else if (votes[prop] == -1) {
                         downVote++;
+                        downVoters.push(prop);
                     }
                 }
             }
+
+            //console.log(upVoters);
             let newDiv = document.createElement('div');
             newDiv.className = 'chatMsg';
-            let html = `<span class="chatName">${pObj.Name}:</span> <span class="chatText">${pObj.Message}</span><br>
+            let html = `<span class="chatName">${pObj.Name}:</span> <span                   class="chatText">${pObj.Message}</span><br>
                         <span class="postedAt">Posted at ${pObj.Time}, ID: ${pObj.ID}</span><br>
-                        <img class="rateBtn upVote" src="like.png"><span class="greenVote">${upVote}</span><img class="rateBtn downVote" src="dislike.png"><span class="redVote">${downVote}</span>`;
+                        <img class="rateBtn upVote" src="like.png"><div class="dropDown"><span class="greenVote">${upVote}</span></div><img class="rateBtn downVote" src="dislike.png"><div class="dropDown"><span class="redVote">${downVote}</span></div>`;
 
             newDiv.innerHTML = html;
-            var like = newDiv.getElementsByClassName('upVote');
-            var disLike = newDiv.getElementsByClassName('downVote');
+            let like = newDiv.getElementsByClassName('upVote'); //upThumb
+            let disLike = newDiv.getElementsByClassName('downVote'); //downThumb
+            let showLikes = newDiv.getElementsByClassName('greenVote');
+            let showDisLikes = newDiv.getElementsByClassName('redVote');
             like[0].addEventListener('click', function (e) {
                 likeBool = true;
                 rateMsg(pObj.ID);
@@ -145,6 +152,39 @@ function updateChat() {
             disLike[0].addEventListener('click', function (e) {
                 disLikeBool = true;
                 rateMsg(pObj.ID);
+            });
+            
+            //SHOW LIKES
+            showLikes[0].addEventListener('click', function (e) {
+                likeBool = true;
+                
+                let popupdiv = document.getElementById('likePop');
+                console.log(popupdiv);
+                if (popupdiv === null){
+                    
+                    showVotes(e.target, upVoters);
+                }
+                else {
+                    popupdiv.outerHTML = '';
+                    delete popupdiv;
+                    likeBool = false;
+                }
+                
+            });
+            
+            //SHOW DISLIKES
+            
+            showDisLikes[0].addEventListener('click', function (e) {
+                disLikeBool = true;
+                let popupdiv = document.getElementById('disPop');
+                if (popupdiv === null){
+                    showVotes(e.target, downVoters);
+                }
+                else {
+                    popupdiv.outerHTML = '';
+                    delete popupdiv;
+                    disLikeBool = false;
+                }
             });
             msgBox.appendChild(newDiv);
 
@@ -163,7 +203,41 @@ function updateChat() {
 }
 
 
+function showVotes(e, voters) {
+    if (likeBool) {
 
+        //console.log(pressed);
+        let div = document.createElement('div');
+        div.className = 'dropdown-content';
+        div.id = 'likePop';
+        voters.forEach(function (x) {
+            let html = `<p class="voteContent">${x}</p>`;
+            div.innerHTML += html;
+
+        })
+        div.style.display = 'block';
+        e.appendChild(div);
+        
+
+    } else if (disLikeBool) {
+
+        //console.log(pressed);
+        let div = document.createElement('div');
+        div.className = 'dropdown-content';
+        div.id = 'disPop';
+        
+        voters.forEach(function (x) {
+            let html = `<p class="voteContent">${x}</p>`;
+            div.innerHTML += html;
+
+        })
+        div.style.display = 'block';
+        e.appendChild(div);
+        
+    }
+    likeBool = false;
+    disLikeBool = false;
+}
 
 
 function rateMsg(id) {
@@ -173,10 +247,10 @@ function rateMsg(id) {
         });
     } else if (disLikeBool) {
         firebase.database().ref(`messages/${id}/Votes/${loggedInUser}`).transaction(function (x) {
-            console.log('downvote körs');
             return -1;
         });
     }
     updateChat();
-    
+    likeBool = false;
+    disLikeBool = false;
 }

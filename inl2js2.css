@@ -56,10 +56,16 @@ body {
 
 .redVote {
     color: firebrick;
+    cursor: pointer;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .greenVote {
     color: forestgreen;
+    cursor: pointer;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .navBar {
@@ -138,6 +144,27 @@ input {
     padding-left: 5px;
 }
 
+
+/* DROPDOWN LIKES DISLIKES */
+
+.dropDown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: floralwhite;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.voteContent {
+    padding-left: 5px;
+    color: black;
+}
 
 
 
