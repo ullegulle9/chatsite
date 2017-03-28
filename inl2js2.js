@@ -19,6 +19,15 @@ inputName.addEventListener('keypress', x => {
 logOut.addEventListener('click', forgetName);
 
 
+/*
+var provider = new firebase.auth.GithubAuthProvider();
+
+firebase.auth().signInWithPopup(provider)
+.then (function(result){
+    let user = result.user;
+});
+*/
+
 updateChat();
 
 let loggedInUser;
@@ -62,12 +71,13 @@ function saveName() {
 function forgetName() {
     localStorage.removeItem("name");
     inputName.style.display = 'block';
+    inputName.value = '';
     nameBtn.style.display = 'block';
     welcomeDiv.innerHTML = '';
     logOut.style.display = 'none';
     chtBox.style.display = 'none';
-    wBox.innerHTML = '<p>See you again soon!</p>';
-    wBox.style.display = 'block';
+    welcomeDiv.innerHTML = '<p>SEE YOU AGAIN SOON!</p>';
+    welcomeDiv.style.display = 'block';
 }
 
 chatBtn.addEventListener('click', function (e) {

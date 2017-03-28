@@ -32,6 +32,17 @@ body {
     overflow-wrap: break-word;
 }
 
+@media (max-width: 510px){
+    #chatBox {
+        width: 350px;
+    }
+    #messageBox > div {
+        width: 300px;
+    }
+}
+
+
+
 .chatMsg {
     padding: 10px;
     border: 1px solid rgba(115, 115, 115, .8);
@@ -84,6 +95,12 @@ body {
 
 #welcome {
     margin-top: 40px;
+}
+
+#welcome > p {
+    margin-top: 200px;
+    font-family: Anton;
+    font-size: 24px;
 }
 
 #forget {
