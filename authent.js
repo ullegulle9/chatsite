@@ -11,7 +11,9 @@ btnLogin.addEventListener('click', function (ev) {
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        // ...
+        console.log(token);
+        console.log(user);
+        
     }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -20,6 +22,9 @@ btnLogin.addEventListener('click', function (ev) {
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
-        // ...
+        console.log(errorCode);
+        console.log(errorMessage);
+        console.log(email);
+        console.log(credential);
     });
 });
