@@ -6,7 +6,7 @@ window.onload = function () {
     let btnBox = document.getElementById('changeBtnBox');
     let colBtn = document.getElementById('changeCol');
     let txtBtn = document.getElementById('changeText');
-    let pic = document.getElementById('userPic');
+
 
     var provider = new firebase.auth.GithubAuthProvider();
     btnLogin.addEventListener('click', function (ev) {
@@ -19,11 +19,15 @@ window.onload = function () {
             console.log(token);
             console.log(user);
             wlcDiv.style.display = 'block';
-            wlcDiv.innerHTML = `Welcome ${user.displayName}`;
+            wlcDiv.innerHTML = `Welcome ${user.displayName}<br>`;
             loginBx.style.display = 'none';
             btnLogout.style.display = 'block';
             btnBox.style.display = 'flex';
+            
+            let pic = document.createElement('img');
+            pic.id = 'userPic';
             pic.src = user.photoURL;
+            wlcDiv.appendChild(pic);
             if (user.displayName == 'Martin Larsson') {
                 txtBtn.disabled = false;
             } else {
