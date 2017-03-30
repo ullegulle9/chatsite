@@ -37,7 +37,9 @@ Error: ${error.message}`;
     btnLogout.addEventListener('click', function (ev) {
         firebase.auth().signOut()
             .then(function (result) {
-                wlcDiv.innerHTML = 'Auf wiedersen!'
+                wlcDiv.innerHTML = 'Auf wiedersen!';
+                btnLogout.style.display = 'none';
+            btnLogin.style.display = 'block';
             })
             .catch(function (error) {
                 console.log(error.code);
