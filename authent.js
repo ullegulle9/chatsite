@@ -2,6 +2,11 @@ window.onload = function () {
     let btnLogin = document.getElementById('loginBtn');
     let wlcDiv = document.getElementById('msgDiv');
     let btnLogout = document.getElementById('logoutBtn');
+    let loginBx = document.getElementById('loginBox');
+    let btnBox = document.getElementById('changeBtnBox');
+    let colBtn = document.getElementById('changeCol');
+    let txtBtn = document.getElementById('changeText');
+    let pic = document.getElementById('userPic');
 
     var provider = new firebase.auth.GithubAuthProvider();
     btnLogin.addEventListener('click', function (ev) {
@@ -13,9 +18,17 @@ window.onload = function () {
             var user = result.user;
             console.log(token);
             console.log(user);
+            wlcDiv.style.display = 'block';
             wlcDiv.innerHTML = `Welcome ${user.displayName}`;
-            btnLogin.style.display = 'none';
+            loginBx.style.display = 'none';
             btnLogout.style.display = 'block';
+            btnBox.style.display = 'flex';
+            pic.src = user.photoURL;
+            if (user.displayName == 'Martin Larsson') {
+                txtBtn.disabled = false;
+            } else {
+                txtBtn.disabled = true;
+            }
 
         }).catch(function (error) {
             // Handle Errors here.
@@ -29,6 +42,7 @@ window.onload = function () {
             console.log(errorMessage);
             console.log(email);
             console.log(credential);
+            wlcDiv.style.display = 'block';
             wlcDiv.innerHTML = `Something went wrong! <br>
 Error: ${error.message}`;
         });
@@ -37,9 +51,11 @@ Error: ${error.message}`;
     btnLogout.addEventListener('click', function (ev) {
         firebase.auth().signOut()
             .then(function (result) {
-                wlcDiv.innerHTML = 'Auf wiedersen!';
+                loginBx.style.display = 'block';
                 btnLogout.style.display = 'none';
-            btnLogin.style.display = 'block';
+                btnBox.style.display = 'none';
+            wlcDiv.innerHTML = '';
+            changeColor('antiquewhite');
             })
             .catch(function (error) {
                 console.log(error.code);
@@ -48,7 +64,20 @@ Error: ${error.message}`;
 Error: ${error.message}`;
             });
     })
+    colBtn.addEventListener('click', x => {
+        changeColor('black');
+    });
+    txtBtn.addEventListener('click', x => {
+        changeColor('antiquewhite');
+    });
+
+    function changeColor(col) {
+        let bg = document.getElementsByTagName("BODY")[0];
+        bg.style.backgroundColor = col;
+    }
 }
+
+
 
 /*
 

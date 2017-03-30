@@ -5,17 +5,30 @@
     <meta charset="UTF-8">
     <title>Autentisera</title>
     <link rel="stylesheet" type="text/css" href="authent.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oswald|Baloo+Bhaina|Chewy|Anton">
 </head>
 
 <body>
+    <div class="flexCont">
+        <div class="centerBox" id="loginBox">
+            <h3>Welcome to this very much needed website!</h3>
+            <p>
+                To find out what you can use it for you must log in.<br> You will need to use GitHub to be able to log in.<br> Log in by pressing the button below.
+            </p>
+            <button class="btn" id="loginBtn">LOG IN</button>
 
-    <div>
-        <button class="btn" id="loginBtn">LOG IN</button>
+        </div>
+
+
+        <button class="btn" id="logoutBtn">LOG OUT</button>
+
+        <div class="centerBox" id="msgDiv">
+        <img src="#" alt="profilepic" id="userPic"></div>
+        <div id="changeBtnBox">
+            <button class="changeBtn" id="changeCol">CHANGE BACKGROUND-COLOR</button>
+            <button class="changeBtn" id="changeText">RESET BACKGROUND-COLOR<br>(for specific users only)</button>
+        </div>
     </div>
-    <button class="btn" id="logoutBtn">LOG OUT</button>
-
-    <div id="msgDiv"></div>
-
     <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
     <script>
