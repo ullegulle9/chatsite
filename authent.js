@@ -1,6 +1,7 @@
 window.onload = function () {
     let btnLogin = document.getElementById('loginBtn');
     let wlcDiv = document.getElementById('msgDiv');
+    let btnLogout = document.getElementById('logoutBtn');
 
     var provider = new firebase.auth.GithubAuthProvider();
     btnLogin.addEventListener('click', function (ev) {
@@ -12,7 +13,9 @@ window.onload = function () {
             var user = result.user;
             console.log(token);
             console.log(user);
-            wlcDiv.innerHTML = `Welcome ${user}`;
+            wlcDiv.innerHTML = `Welcome ${user.displayName}`;
+            btnLogin.style.display = 'none';
+            btnLogout.style.display = 'block';
 
         }).catch(function (error) {
             // Handle Errors here.
@@ -26,6 +29,37 @@ window.onload = function () {
             console.log(errorMessage);
             console.log(email);
             console.log(credential);
+            wlcDiv.innerHTML = `Something went wrong! <br>
+Error: ${error.message}`;
         });
     });
+
+    btnLogout.addEventListener('click', function (ev) {
+        firebase.auth().signOut()
+            .then(function (result) {
+                wlcDiv.innerHTML = 'Auf wiedersen!'
+            })
+            .catch(function (error) {
+                console.log(error.code);
+                console.log(error.message);
+                wlcDiv.innerHTML = `Something went wrong! <br>
+Error: ${error.message}`;
+            });
+    })
 }
+
+/*
+
+window.addEventListener('load', function () {
+    var provider = new firebase.auth.GithubAuthProvider();
+    console.log('före autentisering');
+
+    firebase.auth().signInWithPopup(provider)
+        .then(function (result) {
+            console.log('Autentisering lyckades: ', result);
+        })
+        .catch(function (error) {
+            console.log('Autentisering misslyckades: ', error);
+        })
+});
+*/

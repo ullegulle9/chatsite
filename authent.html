@@ -1,30 +1,36 @@
 <!doctype html>
 <html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Untitled Document</title>
+    <title>Autentisera</title>
+    <link rel="stylesheet" type="text/css" href="authent.css">
 </head>
 
 <body>
 
+    <div>
+        <button class="btn" id="loginBtn">LOG IN</button>
+    </div>
+    <button class="btn" id="logoutBtn">LOG OUT</button>
 
-    <button id="loginBtn">LOG IN</button>
-    
     <div id="msgDiv"></div>
 
     <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
     <script>
         // Initialize Firebase
-        
         var config = {
-            apiKey: "AIzaSyA0387cbgMiEK3zz30a0L1iu-TtSbRPJ_o",
-            authDomain: "autent-99c80.firebaseapp.com",
-            databaseURL: "https://autent-99c80.firebaseio.com",
-            storageBucket: "autent-99c80.appspot.com",
-            messagingSenderId: "755626830435"
+            apiKey: "AIzaSyDe83Rc51k1Bi_a96Xsa1cvS2YU95BzdZE",
+            authDomain: "autent2.firebaseapp.com",
+            databaseURL: "https://autent2.firebaseio.com",
+            storageBucket: "autent2.appspot.com",
+            messagingSenderId: "730063676152"
         };
         firebase.initializeApp(config);
+
     </script>
     <script src="authent.js"></script>
 </body>
+
 </html>
