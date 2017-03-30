@@ -53,10 +53,10 @@ body {
     font-size: 30px;
 }
 
-#loginBtn {
-    margin: 20px;
-    padding-right: 30px;
-    padding-left: 30px;
+#loginBtn, #twtBtn {
+    margin: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
     
 }
 
