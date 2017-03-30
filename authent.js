@@ -1,5 +1,5 @@
 let btnLogin = document.getElementById('loginBtn');
-
+let wlcDiv = document.getElementById('msgDiv');
 
 var provider = new firebase.auth.GithubAuthProvider();
 
@@ -13,6 +13,7 @@ btnLogin.addEventListener('click', function (ev) {
         var user = result.user;
         console.log(token);
         console.log(user);
+        wlcDiv.innerHTML = `Welcome ${user}`;
         
     }).catch(function (error) {
         // Handle Errors here.
