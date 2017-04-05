@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Spurs players</title>
+    <link rel="stylesheet" type="text/css" href="sort-inl4.css">
+</head>
+
+<body>
+    <div class="centreAll">
+        <div class="cont">
+            <div class="flexDiv" id="inputDiv">
+                <input type="text" placeholder="Surname" id="sName">
+                <input type="text" placeholder="Firstname" id="fName">
+                <input type="text" placeholder="Shirt number" id="shNumber">
+                <button id="addPlayer">ADD PLAYER</button>
+            </div>
+            <div class="flexDiv" id="selectDiv">
+                <span class="span">Sort by: </span>
+                <select id="sortSelect">
+        <option value="Surname">Surname</option>
+        <option value="Firstname">First name</option>
+        <option value="Shirtnumber">Shirt number</option>
+    </select>
+                <span class="span">Show: </span>
+                <select id="showAmount">
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+    </select>
+            </div>
+            <br>
+
+            <div class="flexDiv">
+                <table id="playerTable">
+                    <thead>
+                        <tr>
+                            <th>Surname</th>
+                            <th>Firstname</th>
+                            <th>Shirt number</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tBody">
+
+                    </tbody>
+
+                </table>
+                <br>
+            </div>
+            <div class="flexDiv" id="nextPrev">
+                <button class="active" id="nextList">View next</button>
+                <button class="inActive" id="prevList">View previous</button>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCIEkzKV5O7aX-v-7zCGAk8wkJ8FBOg7tQ",
+            authDomain: "sort-spurs.firebaseapp.com",
+            databaseURL: "https://sort-spurs.firebaseio.com",
+            projectId: "sort-spurs",
+            storageBucket: "sort-spurs.appspot.com",
+            messagingSenderId: "735093597709"
+        };
+        firebase.initializeApp(config);
+
+    </script>
+    <script src="sort-inl4.js"></script>
+</body>
+
+</html>

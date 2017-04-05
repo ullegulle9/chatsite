@@ -1,0 +1,106 @@
+html {
+    font-family: Arial;
+    color: rgb(18,32,64);
+    background-image: url(spursbg.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div {
+    margin: 10px;
+}
+
+input {
+    padding: 10px;
+    border-radius: 5px;
+    border-style: none;
+    width: auto;
+    background-color: #e9eeeb;
+}
+
+
+
+.centreAll {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.cont {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    width: 650px;
+}
+
+.flexDiv {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+
+}
+
+#inputDiv {
+    justify-content: space-between;
+}
+#addPlayer {
+    width: 100%;
+    margin-top: 10px;
+    background-color: rgba(18,32,64,.7);
+    border-style: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: #e9eeeb;
+}
+
+#selectDiv {
+    padding: 10px;
+}
+
+select {
+    background-color: #e9eeeb;
+    border-radius: 5px;
+    border-style: none;
+}
+
+#nextPrev {
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+#nextPrev > button {
+    background-color: rgb(18,32,64);
+    padding: 10px;
+    cursor: pointer;
+    color: #e9eeeb;
+    border-radius: 5px;
+    border-style: none;
+}
+
+.inActive {
+    opacity: 0.5;
+}
+
+.span {
+    margin: 5px;
+}
+
+#prevList {
+    
+}
+
+table {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(18,32,64);
+}
+
+td, th {
+    border: 1px solid #e9eeeb;
+    padding: 5px;
+    background-color: #e9eeeb;
+    text-align: center;
+}
